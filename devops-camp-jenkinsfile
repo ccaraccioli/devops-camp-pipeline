@@ -16,18 +16,18 @@ pipeline {
         }
         stage('Test'){
             steps {
-                echo "Testing stage"
+                echo "Testing Stage"
             }
         }
         stage('Deploy') {
             steps {
-                echo "Deployment stage"
+                echo "Deployment Stage"
             }
         }
     }
     post {
         cleanup {
-            echo "Clean workspace"
+            echo "Clean Workspace"
             sh 'docker system prune -f'
             sh 'rm -rf .git ./*'
         }
