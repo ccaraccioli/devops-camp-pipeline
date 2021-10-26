@@ -9,7 +9,7 @@ pipeline {
                 sh 'git clone https://github.com/ccaraccioli/afs-labs-student.git'
             }
         }
-        stage('Application docker build') {
+        stage('Application Docker Build') {
             steps {
                 echo "Building application image"
             }
