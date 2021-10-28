@@ -47,9 +47,13 @@ pipeline {
                 }
             }
         }
-        stage('Test'){
+        stage('Security Scanning'){
             steps {
-                echo "Testing Stage"
+                echo "Security Scanning Stage"
+                withCredentials([usernamePassword(credentialsId: 'ccaraccioli-harbor-auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    echo "Scanning $APP_IMAGE_NAME image"
+                    sh 'python harbor_scanner.py -i $APP_IMAGE_NAME -r $HARBOR_REGISTRY -p $HARBOR_PROJECT -c ${USERNAME}:${PASSWORD}'
+                }
             }
         }
         stage('Deploy') {
