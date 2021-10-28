@@ -105,8 +105,7 @@ pipeline {
                     echo "Print output and clean feature test containers"
                     script {
                         try {
-                            sh 'docker exec $APP_CONTAINER_NAME ls .'
-                            sh 'docker cp $APP_CONTAINER_NAME:../afs-labs-student/log_file.txt $LOG_FILE_NAME'
+                            sh 'docker cp $APP_CONTAINER_NAME:./log_file.txt $LOG_FILE_NAME'
                             sh 'cat $LOG_FILE_NAME'
                             sh 'rm -rf $LOG_FILE_NAME'
                             sh 'docker rm -f $DB_CONTAINER_NAME'
