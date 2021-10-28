@@ -10,6 +10,7 @@ pipeline {
         APP_CONTAINER_NAME = 'ccaraccioli-web-app'
         DB_CONTAINER_NAME = 'ccaraccioli-postgres-db'
         NETWORK = 'ccaraccioli-feature-tests'
+        LOG_FILE_NAME = 'featuretestinglog.txt'
     }
     stages {
         stage('Application Repository') {
