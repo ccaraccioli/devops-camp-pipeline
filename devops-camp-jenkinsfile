@@ -78,10 +78,10 @@ pipeline {
                 sh 'docker network create $NETWORK'
                 withCredentials([usernamePassword(credentialsId: 'db-auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 sh '''
-                rm -rf $LOG_FILE_NAME
-                docker rm -f $DB_CONTAINER_NAME
-                docker rm -f $APP_CONTAINER_NAME
-                docker rmi $HARBOR_REGISTRY/$HARBOR_PROJECT/$APP_IMAGE_NAME:$APP_HASH-$PIPELINE_HASH
+                rm -rf $LOG_FILE_NAME ; \
+                docker rm -f $DB_CONTAINER_NAME ; \
+                docker rm -f $APP_CONTAINER_NAME ; \
+                docker rmi $HARBOR_REGISTRY/$HARBOR_PROJECT/$APP_IMAGE_NAME:$APP_HASH-$PIPELINE_HASH ; \
                 docker network rm $NETWORK
                 '''
                 sh '''
