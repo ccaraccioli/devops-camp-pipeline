@@ -106,7 +106,7 @@ pipeline {
                     script {
                         try {
                             sh 'docker exec $APP_CONTAINER_NAME ls -lah'
-                            sh 'docker cp $APP_CONTAINER_NAME:./app/log_file.txt $LOG_FILE_NAME'
+                            sh 'docker cp $APP_CONTAINER_NAME:/app/log_file.txt $LOG_FILE_NAME'
                             sh 'cat $LOG_FILE_NAME'
                             sh 'rm -rf $LOG_FILE_NAME'
                             sh 'docker rm -f $DB_CONTAINER_NAME'
